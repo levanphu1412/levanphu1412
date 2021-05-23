@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-public class App {
+public class App{
   public static void main(String[] args) {
     System.out.println(" chào các bạn lớp java 4");
     Math math = new Math();
@@ -37,5 +37,13 @@ public class App {
     System.out.println("mảng số lẻ: " + Arrays.toString(math.oddNumberArray(intArray1)));
 
     System.out.println("đánh giá chỉ số BMI của thầy Cường: " + math.bmiRating(height, weight));
+
+    // GuessNumber guessNumber = new GuessNumber();
+    
+    // guessNumber.randomNumerLessThan90();
+
+    // guessNumber.printOddNumber();
+
+    // guessNumber.loopUntilUserQuits();
   }
 }
