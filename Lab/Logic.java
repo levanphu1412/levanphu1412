@@ -166,8 +166,8 @@ public class Logic {
     }
 
     public void primeArray() {
-    Scanner input = new Scanner(System.in);
-    while (true) {
+        Scanner input = new Scanner(System.in);
+        while (true) {
         System.out.println("nhập vào 1 số nguyên dương < 100 hoặc nhập 'q' để thoát");
         String a = input.nextLine();
         if(a.equals("q")) {
@@ -191,5 +191,7 @@ public class Logic {
             System.out.println(primeNumbers);
         }
     }
-    }    
+    input.close();
+    }  
+    
 }

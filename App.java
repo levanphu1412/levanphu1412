@@ -5,7 +5,7 @@ public class App{
     System.out.println(" chào các bạn lớp java 4");
     Math math = new Math();
     System.out.println(math.isOdd(5));
-
+    System.out.println(math.isEven(9));
     float weight = 74f;
     float height = 1.76f;
     System.out.println("chỉ số BMI của thầy cường là "+ math.calculateBMI(height, weight));
