@@ -15,7 +15,15 @@ public class StringUtil {
     
 
 public boolean isContain(String strA, String strB) {
-    return true;
+    Boolean b = false;
+    for (int a = 0; a < strA.length() - strB.length() + 1; a++) {
+        
+        if (strB.equals(strA.substring(a, a + strB.length()))) {
+            b = true;
+        }
+    }
+    return b;
+    
   }
 
   /*
@@ -66,7 +74,6 @@ public boolean isContain(String strA, String strB) {
     Scanner input = new Scanner(System.in);
     System.out.println("Nhập chuỗi để tìm từ dài nhất");
     String strA = input.nextLine();
-    
     String[] strB = strA.split(" ");
     int index = 0;
     int lenMax = 0;
@@ -76,7 +83,7 @@ public boolean isContain(String strA, String strB) {
         if(len > lenMax) {
             lenMax = len;
             index = i;
-        }
+         }
     }
     
     return strB[index];

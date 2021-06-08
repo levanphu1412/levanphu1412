@@ -16,6 +16,8 @@ public class App {
         StringUtil stringUtil  = new StringUtil();
         // stringUtil.camelCase();
         // stringUtil.longestWord();
+        System.out.println(stringUtil.isContain("abcdefgh", "aBc"));
+
         System.out.println("từ dài nhất là: " + stringUtil.longestWord());
 
         
