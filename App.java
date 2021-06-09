@@ -1,5 +1,7 @@
 import java.util.Arrays;
 
+import baitap.Palindrome;
+
 public class App{
   public static void main(String[] args) {
     System.out.println(" chào các bạn lớp java 4");
@@ -45,5 +47,9 @@ public class App{
     // guessNumber.printOddNumber();
 
     // guessNumber.loopUntilUserQuits();
+
+    Palindrome palindrome = new Palindrome();
+    palindrome.palindrome();  
+
   }
 }

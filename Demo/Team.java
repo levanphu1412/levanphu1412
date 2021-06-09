@@ -16,7 +16,7 @@ public class Team {
   //thay đổi quyền truy xuất đến thuộc tính hoặc phương thức
   //phục vụ cho tính chất đóng gói (encapsulation)
 
-  private List<Player> players = new ArrayList<>();
+  private static List<Player> players = new ArrayList<>();
   //Nếu không khởi tạo = new ArrayList<>(); thì players sẽ nhận giá trị null
   //List là generic interface: giao diện có kiểu tổng quát
   //ArrayList là một class implement inteface List.
@@ -77,7 +77,7 @@ public class Team {
   }
 
   //Hãy code ở đây
-  public void showAllPlayers() {
+  public void  showAllPlayers() {
     /* cách của anh Quang Tùng */
     //dùng vòng lặp có biến đếm thì có thể in ra thư tự
     /*for(int i=0 ; i < players.size() ; i++){
