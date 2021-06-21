@@ -25,5 +25,9 @@ public class App {
 
         
         System.out.println(stringUtil.reverse());
+
+        System.out.println("vi tri cua strB: " + stringUtil.find("hom nay troi nong qua", "nong"));
+
+        System.out.println(stringUtil.countWords());
       }
 }
