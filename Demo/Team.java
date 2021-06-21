@@ -8,7 +8,7 @@ public class Team {
   String name;
   String stadium;
   String coach;
-  String establishedYear;
+  int establishedYear;
   private long budget; //số tiền trong quỹ của câu lạc bộ cần phải giới quyền xem
   //private giới hạn xem trong nội bộ class
   //package giới hạn xem trong nội bộ của gói phần mềm
@@ -16,7 +16,7 @@ public class Team {
   //thay đổi quyền truy xuất đến thuộc tính hoặc phương thức
   //phục vụ cho tính chất đóng gói (encapsulation)
 
-  private static List<Player> players = new ArrayList<>();
+  private List<Player> players = new ArrayList<>();
   //Nếu không khởi tạo = new ArrayList<>(); thì players sẽ nhận giá trị null
   //List là generic interface: giao diện có kiểu tổng quát
   //ArrayList là một class implement inteface List.
@@ -32,7 +32,7 @@ public class Team {
   }  
 
   public Team(String name, String stadium, 
-  String coach, String establishedYear) {
+  String coach, int establishedYear) {
     this.name = name;
     this.coach = coach;
     this.stadium = stadium;

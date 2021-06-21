@@ -5,6 +5,7 @@ public class Player {
     public String toString() {
       return "Player [name=" + name + ", no=" + no + ", position=" + position + "]";
     }
+    
   
     private String name;
     private int no;
