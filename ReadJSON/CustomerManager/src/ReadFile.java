@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import com.google.gson.reflect.TypeToken;
 
@@ -128,7 +129,11 @@ public class ReadFile {
                     countPeopleByCountry.put(listPerson.get(i).getCountry(), countPeopleByCountry.get(listPerson.get(i).getCountry())+1);
                 }
             }
-            System.out.println(countPeopleByCountry);
+            Set<String> keySet = countPeopleByCountry.keySet();
+            for(String key : keySet) {
+                System.out.println(key + " - " + countPeopleByCountry.get(key));
+            }
+            // System.out.println(countPeopleByCountry);
         }catch(Exception ex) {
             ex.printStackTrace();
         }
