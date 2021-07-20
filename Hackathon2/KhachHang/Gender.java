@@ -1,4 +1,4 @@
-package Hackathon2.SoNguyenTo.KhachHang.KhachHang;
+package Hackathon2.KhachHang;
 
 public enum Gender {
     MALE("Nam"), FEMALE("Nữ"), GENDER("Khác");

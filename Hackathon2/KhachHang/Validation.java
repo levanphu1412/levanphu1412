@@ -1,4 +1,4 @@
-package Hackathon2.SoNguyenTo.KhachHang.KhachHang;
+package Hackathon2.KhachHang;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
