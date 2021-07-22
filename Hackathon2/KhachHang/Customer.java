@@ -90,9 +90,5 @@ public class Customer {
                 '}';
     }
 
-    public void setTen() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("nhập tên thay đổi");
-        name = scanner.nextLine();
-    }
+
 }

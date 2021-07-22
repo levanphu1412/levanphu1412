@@ -84,7 +84,14 @@ public class CustomerRespository {
         int count = 0;
         for(Customer customer : customers) {
             if(customer.getMaKhachHang().equalsIgnoreCase(str)){
-                customer.setTen();
+                System.out.println("nhập tên khách hàng");
+                customer.setName(scanner.nextLine());
+                System.out.println("ngày sinh");
+                customer.setBirthDay(scanner.nextLine());
+                System.out.println("Nhập email");
+                customer.setEmail(scanner.nextLine());
+                System.out.println("Nhập số điện thoại");
+                customer.setPhone(scanner.nextLine());
                 System.out.println(customer);
                 count++;
             }
