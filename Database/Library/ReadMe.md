@@ -6,7 +6,7 @@
 ## tạo bảng sách
 
 ```sql
-    CREATE TABLE sach(
+CREATE TABLE sach(
 	id INT PRIMARY KEY,
     ten VARCHAR(30) NOT NULL,
     sotrang INT NOT NULL,
@@ -22,7 +22,7 @@
 ## tạo bảng thể loại
 
 ```sql
-    CREATE TABLE theloai(
+CREATE TABLE theloai(
         id INT PRIMARY KEY,
         tentheloai TEXT
     )
@@ -31,7 +31,7 @@
 ## tạo bảng sach_theloai
 
 ```sql
-    CREATE TABLE sach_theloai(
+CREATE TABLE sach_theloai(
 	sach_id INT,
     theloai_id INT,
     FOREIGN KEY(sach_id) REFERENCES sach(id),
@@ -41,7 +41,7 @@
 
 ## tạo bảng tác giả
 ```sql
-    CREATE TABLE tacgia(
+CREATE TABLE tacgia(
 	id INT PRIMARY KEY,
     ten VARCHAR(30) NOT NULL,
     ngaysinh DATE,
@@ -53,7 +53,7 @@
 ## tạo bảng sach_tacgia
 
 ```sql
-    CREATE TABLE sach_tacgia(
+CREATE TABLE sach_tacgia(
 	sach_id INT,
     tacgia_id INT,
     FOREIGN KEY(sach_id) REFERENCES sach(id),
@@ -64,7 +64,7 @@
 ## tạo bảng tái bản
 
 ```sql
-    CREATE TABLE taiban(
+CREATE TABLE taiban(
 	id INT PRIMARY KEY,
     nam YEAR NOT NULL,
     sach_id INT,
@@ -88,7 +88,7 @@
 ## tạo bảng nhân viên
 
 ```sql
-    CREATE TABLE nhanvien(
+CREATE TABLE nhanvien(
 	id INT PRIMARY KEY,
     ten VARCHAR(30) NOT NULL,
     ngaysinh DATE,
@@ -103,7 +103,7 @@
 ## tạo bảng phiếu mượn
 
 ```sql
-    CREATE TABLE phieumuon(
+CREATE TABLE phieumuon(
 	id INT PRIMARY KEY,
     docgia_id INT,
     nhanvien_id INT,
@@ -117,7 +117,7 @@
 ## tạo bảng chi tiết mượn
 
 ```sql
-    CREATE TABLE chitietmuon(
+CREATE TABLE chitietmuon(
 	phieumuon_id INT,
     sach_id INT,
     soluong INT NOT NULL,
@@ -129,7 +129,7 @@
 ## tạo bảng phiếu trả 
 
 ```sql
-    CREATE TABLE phieutra(
+CREATE TABLE phieutra(
 	id INT PRIMARY KEY,
     phieumuon_id INT,
     ngaytra DATE NOT NULL,
