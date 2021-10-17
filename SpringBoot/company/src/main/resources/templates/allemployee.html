@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee</title>
+</head>
+<body>
+    <a href="/employee">Trang đầu</a>&nbsp;&nbsp;
+    <a href="/employee/add">Thêm mới</a>&nbsp;&nbsp;
+    <a href="/employee/search">Tìm kiếm</a><br>
+    <ul>
+        <li th:each="employee: ${employees}">
+            <a th:href="@{/employee/{id}(id=${employee.id})}"><strong th:text="|name: ${employee.firstName + ' ' + employee.lastName}|"></strong></a>
+            <p th:text="|email: ${employee.email}|"></p>
+            <p th:text="|passport: ${employee.passportNumber}|"></p>
+        </li>
+    </ul>
+</body>
+</html>
