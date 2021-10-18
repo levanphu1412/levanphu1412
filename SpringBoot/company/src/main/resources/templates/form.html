@@ -8,6 +8,7 @@
 </head>
 <body>
     <form action="#" th:action="@{/employee/save}" th:object="${employee}" method="post" novalidate = "novalidate">
+        <input type="hidden" placeholder="id" th:field="*{id}"/><br><br>
         <input type="text" placeholder="firts name" th:field="*{firstName}"/><br><br>
         <input type="text" placeholder="last name" th:field="*{lastName}"/><br><br>
         <input type="text" placeholder="email" th:field="*{email}"/><br><br>
