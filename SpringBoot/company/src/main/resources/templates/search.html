@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tìm kiếm</title>
+<head th:replace="allemployee.html :: header('Tìm kiếm')">
 </head>
 <body>
 
-<form action="#" th:action="@{/employee/search}" th:object="${searchrequest}" method="post" novalidate="novalidate">
-    <input type="text" th:field="*{keyword}" placeholder="type keyword here"/><br><br>
-    <button type="submit">Search</button>
-</form>
+    <div class="row my-5">
+        <form th:action="@{/employee/search}" th:object="${searchrequest}" method="post" novalidate="novalidate">
+            <div class="col-6 d-flex">
+                <button type="submit" class="btn btn-primary mx-3">Search</button>
+                <input type="text" th:field="*{keyword}" placeholder="type keyword here" name="name"/><br><br>
+            </div>
+        </form>
+    </div>
+
+    <footer th:replace="allemployee.html :: footer"></footer>
+
 </body>
 </html>
