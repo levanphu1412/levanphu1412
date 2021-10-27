@@ -10,6 +10,7 @@ public abstract class Dao<T> {
     protected List<T> collections = new ArrayList<>();
 
     public abstract void readCSV(String csvFile);
+   
 
     public abstract List<T> getAll();
 

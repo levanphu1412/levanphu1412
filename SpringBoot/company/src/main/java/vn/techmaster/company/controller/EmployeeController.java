@@ -1,23 +1,29 @@
 package vn.techmaster.company.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import vn.techmaster.company.model.Employee;
 import vn.techmaster.company.repository.EmployeeDao;
 import vn.techmaster.company.request.SearchRequest;
+import vn.techmaster.company.service.StorageService;
 
 import java.util.Optional;
+
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/employee")
 public class EmployeeController {
     @Autowired
     private EmployeeDao employeeDao;
+   
+
+   
     @GetMapping
     public String getAll(Model model) {
         model.addAttribute("employees", employeeDao.getAll());
@@ -38,18 +44,36 @@ public class EmployeeController {
         return "form";
     }
 
-    @PostMapping("/save")
-    public String save(Employee employee, BindingResult result, RedirectAttributes redirect) {
-        if(result.hasErrors()) {
-            return "form";
-        }
-        if(employee.getId() > 0){
-            employeeDao.update(employee);
-        }else {
-            employeeDao.add(employee);
-        }
-        return "redirect:/employee";
+    // @PostMapping("/save")
+    // public String save(@Valid Employee employee, BindingResult result, RedirectAttributes redirect) {
+    //     if(result.hasErrors()) {
+    //         return "form";
+    //     }
+    //     if(employee.getId() > 0){
+    //         employeeDao.update(employee);
+    //     }else {
+    //         employeeDao.add(employee);
+    //     }
+    //     return "redirect:/employee";
+    // }
+
+    @PostMapping(value = "/save", consumes = { "multipart/form-data" })
+    public String upload(@Valid @ModelAttribute Employee employee, BindingResult result, RedirectAttributes redirect, Model model) {
+      if (employee.getPhoto().getOriginalFilename().isEmpty()) {    
+        result.addError(new FieldError("person", "photo", "Photo is required"));
+      }
+      if (result.hasErrors()) {
+        return "form";
+      }if(employee.getId() > 0) {
+          employeeDao.update(employee);
+      }else{  
+         
+        employeeDao.add(employee);
+      }
+      
+      return "redirect:/employee";
     }
+  
 
     @GetMapping(value = "/edit/{id}")
     public String editEmployeeId(@PathVariable("id") int id, Model model) {

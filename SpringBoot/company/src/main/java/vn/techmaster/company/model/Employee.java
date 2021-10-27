@@ -2,47 +2,38 @@ package vn.techmaster.company.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import org.springframework.web.multipart.MultipartFile;
+
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import java.util.Locale;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Employee {
-    @JsonIgnore
-    int id;
-
-    String firstName;
-    String lastName;
-    String email;
-    String passportNumber;
-    public int getId() {
-        return id;
-    }
-    public void setId(int id) {
-        this.id = id;
-    }
-    public String getFirstName() {
-        return firstName;
-    }
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-    public String getLastName() {
-        return lastName;
-    }
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-    public String getEmail() {
-        return email;
-    }
-    public void setEmail(String email) {
-        this.email = email;
-    }
-    public String getPassportNumber() {
-        return passportNumber;
-    }
-    public void setPassportNumber(String passportNumber) {
-        this.passportNumber = passportNumber;
-    }
-
+   @JsonIgnore
+   private int id;
+   @Size(min = 2, max = 10, message = "First Name must between 2 and 10")
+   private String firstName;
+   @Size(min = 2, max = 10, message = "Last Name must between 2 and 10")
+   private String lastName;
+   @NotBlank(message = "Email cannot null")
+   @Email(message = "Not valid email")
+   private String email;
+   @Size(min = 7, max = 20, message = "Passport must between 7 and 20")
+   private String passportNumber;
+   @JsonIgnore
+   private String image;
+   @JsonIgnore
+   private MultipartFile photo;
+   
 
     public boolean matchWithKeyword(String keyword) {
         String keywordLowerCase = keyword.toLowerCase();

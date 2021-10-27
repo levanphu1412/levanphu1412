@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-<head th:replace="allemployee.html :: header(${employee.firstName + ' ' + employee.lastName})">
+<head th:replace="allemployee.html :: head(${employee.firstName + ' ' + employee.lastName})">
     <!-- <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title th:text="${employee.firstName + ' ' + employee.lastName}"></title> -->
 </head>
 <body>
-    <div class="container m-5">
+    <header th:replace="allemployee.html :: header"></header>
+    <div class="container m-5" >
         <h2 th:text="${employee.firstName + ' ' + employee.lastName}"></h2>
         <p th:text="|email: ${employee.email}|"></p>
         <p th:text="|passport: ${employee.passportNumber}|"></p><br>
+        <p><img style="width : 100px" th:src = "@{/photos/{photo}(photo = ${employee.image})}"/></p>        
         <a th:href="@{/employee/edit/{id}(id=${employee.id})}">Edit employee</a>&nbsp;&nbsp;
         <a th:href="@{/employee/delete/{id}(id=${employee.id})}">Delete employee</a><br>
     </div>

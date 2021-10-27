@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-<head th:replace="allemployee.html :: header('Tìm kiếm')">
+<head th:replace="allemployee.html :: head('Tìm kiếm')">
 </head>
 <body>
+    <header th:replace="allemployee.html :: header"></header>
 
     <div class="row my-5">
         <form th:action="@{/employee/search}" th:object="${searchrequest}" method="post" novalidate="novalidate">

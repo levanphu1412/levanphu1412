@@ -1,31 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-<head th:replace="allemployee.html :: header('Add employee')">
+<head th:replace="allemployee.html :: head('Add employee')">
 </head>
 <body>
-    <form class="col-3 row my-5 m-5" th:action="@{/employee/save}" th:object="${employee}" method="post" novalidate = "novalidate">
+    <header th:replace="allemployee.html :: header"></header>
+
+    <form class="col-3 row my-5 m-5" th:action="@{/employee/save}" th:object="${employee}" method="post"  novalidate = "novalidate" enctype="multipart/form-data" >
         <input type="hidden" placeholder="id" th:field="*{id}"/><br><br>
         <div class="form-group">
-          <label for="exampleInputEmail1"></label>
-          <input type="text" th:field="*{firstName}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="First Name">
+          <label for="firstName"></label>
+          <input type="text" th:field="*{firstName}" class="form-control" id="firstName" placeholder="First Name">
+          <div class="text-danger" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></div>
         </div>
         <div class="form-group">
-          <label for="exampleInputPassword1"></label>
-          <input type="text" th:field="*{lastName}" class="form-control" id="exampleInputPassword1" placeholder="Last Name">
+          <label for="lastName"></label>
+          <input type="text" th:field="*{lastName}" class="form-control" id="lastName" placeholder="Last Name">
+          <div class="text-danger" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></div>
         </div>
         <div class="form-group">
-            <label for="exampleInputPassword1"></label>
-            <input type="text" th:field="*{email}" class="form-control" id="exampleInputPassword1" placeholder="Email">
+            <label for="email"></label>
+            <input type="text" th:field="*{email}" class="form-control" id="email" placeholder="Email">
+            <div class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
           </div>
           <div class="form-group">
-            <label for="exampleInputPassword1"></label>
-            <input type="text" th:field="*{passportNumber}" class="form-control" id="exampleInputPassword1" placeholder="Passport">
+            <label for="passportNumber"></label>
+            <input type="text" th:field="*{passportNumber}" class="form-control" id="passportNumber" placeholder="Passport">
+            <div class="text-danger" th:if="${#fields.hasErrors('passportNumber')}" th:errors="*{passportNumber}">Name Error</div>
           </div>
-          
+
+          <div class="form-group">
+            <label for="photo"></label>
+            <div class="col-sm-9">
+              <input type="file" class="form-control"th:field="*{photo}" />
+            </div>
+            <div class="text-danger"  th:if="${#fields.hasErrors('photo')}" th:errors="*{photo}">Upload Error</div>
+          </div>          
+
           <div class="form-group">
             <br/>
             <button type="submit" class="btn btn-primary">Submit</button>
           </div>
+
+         
       </form>
 
     <!-- <form action="#" th:action="@{/employee/save}" th:object="${employee}" method="post" novalidate = "novalidate">
