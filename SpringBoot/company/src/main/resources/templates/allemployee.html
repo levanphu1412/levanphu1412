@@ -44,7 +44,7 @@
                 <td><a th:href="@{/employee/{id}(id=${employee.id})}" style="text-decoration: none"><p th:text="${employee.firstName + ' ' + employee.lastName}"></p></a></td>
                 <td th:text="${employee.email}"></td>
                 <td th:text="${employee.passportNumber}"></td> 
-                <td><img style="width : 100px" th:src = "@{/photos/{photo}(photo = ${employee.image})}"/></td>                             
+                <td><img style="width : 100px; height: 100px;" th:src = "@{/photos/{photo}(photo = ${employee.image})}"/></td>                             
             </tr>
         </tbody>
     </table>

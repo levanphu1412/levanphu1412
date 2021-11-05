@@ -106,6 +106,7 @@ public class EmployeeDao extends Dao<Employee> {
             existemployee.setLastName(employee.getLastName());
             existemployee.setEmail(employee.getEmail());
             existemployee.setPassportNumber(employee.getPassportNumber());
+            storageService.uploadFile(employee.getPhoto());
             existemployee.setImage(employee.getPhoto().getOriginalFilename());
         });
     }

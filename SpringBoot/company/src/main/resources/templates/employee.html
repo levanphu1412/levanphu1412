@@ -12,7 +12,7 @@
         <h2 th:text="${employee.firstName + ' ' + employee.lastName}"></h2>
         <p th:text="|email: ${employee.email}|"></p>
         <p th:text="|passport: ${employee.passportNumber}|"></p><br>
-        <p><img style="width : 100px" th:src = "@{/photos/{photo}(photo = ${employee.image})}"/></p>        
+        <p><img style="width : 100px; height : 100px" th:src = "@{/photos/{photo}(photo = ${employee.image})}"/></p>        
         <a th:href="@{/employee/edit/{id}(id=${employee.id})}">Edit employee</a>&nbsp;&nbsp;
         <a th:href="@{/employee/delete/{id}(id=${employee.id})}">Delete employee</a><br>
     </div>
