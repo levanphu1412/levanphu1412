@@ -15,7 +15,12 @@ public interface EmployeeRepository extends JpaRepository<Employee, Long> {
 
     Optional<Employee> findByEmail(String string);
 
-    @Query(value = "SELECT * FROM employee e WHERE e.first_name LIKE :name% OR e.last_name LIKE :name%", nativeQuery = true)
+    @Query(value = "SELECT * FROM employee e WHERE CONCAT_WS(' ', e.first_name, e.last_name) LIKE %:name%", nativeQuery = true)
     List<Employee> getByName(@Param("name") String name);
-    
+
+    @Query(value = "SELECT * FROM employee e WHERE CONCAT_WS(' ', e.first_name, e.last_name) LIKE %:name% AND DATEFIFF(YEAR, e.BIRTH_DAY, CURRENT_DATE) = :age ", nativeQuery = true)
+    List<Employee> getByNameAndAge(@Param("name") String name, @Param("age") int age);
+
+    @Query(value = "SELECT * FROM employee e WHERE DATEDIFF(YEAR, e.BIRTH_DAY, CURRENT_DATE) >= :start AND  DATEDIFF(YEAR, e.BIRTH_DAY, CURRENT_DATE) <= :end", nativeQuery = true)
+    List<Employee> getByAgeAbout(@Param("start") int start, @Param("end") int end);
 }

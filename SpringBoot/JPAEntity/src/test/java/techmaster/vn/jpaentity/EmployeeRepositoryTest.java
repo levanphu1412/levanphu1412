@@ -8,6 +8,7 @@ import org.springframework.test.context.jdbc.Sql;
 
 import lombok.extern.slf4j.Slf4j;
 import techmaster.vn.jpaentity.model.Employee;
+import techmaster.vn.jpaentity.model.Name;
 import techmaster.vn.jpaentity.repository.EmployeeRepository;
 
 
@@ -15,6 +16,8 @@ import techmaster.vn.jpaentity.repository.EmployeeRepository;
 import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Optional;
+
+
 
 @DataJpaTest
 @Sql({"/employee.sql"})
@@ -43,8 +46,7 @@ public class EmployeeRepositoryTest {
     @Test  
     public void createNewEmployeeTest() {
         Employee employee = Employee.builder()
-                .firstName("Phú")
-                .lastName("Lê")
+                .name(new Name("Phú", "Lê"))
                 .gender("Male")
                 .address("Việt Nam")
                 .email("levanphu5555@gmail.com")
@@ -55,12 +57,10 @@ public class EmployeeRepositoryTest {
        employeeRepository.findAll().forEach(System.out::println);
        Assertions.assertThat(employee.getId()).isGreaterThan(0);
     }
-
     @Test
     public void updateEmployeeTest() {
         Employee employee = employeeRepository.findById(2L).get();
-        employee.setFirstName("Hoang");
-        employee.setLastName("Duong");
+        employee.setName(new Name("Hoang", "Duong"));
         employee.setGender("Female");
         employee.setAddress("Viet Nam");
         employee.setEmail("hoangduong1703@gmail.com");
@@ -90,6 +90,28 @@ public class EmployeeRepositoryTest {
     }
 
 
-    
+    @Test
+    public void getByNameTest() {
+        List<Employee> employee = employeeRepository.getByName("Alphonse");
+        log.info("employee find by name ");
+        System.out.println(employee);
+        Assertions.assertThat(employee.size()).isEqualTo(1);
+    }
+
+    @Test
+    public void getByNameAndAgeTest() {
+        List<Employee> employee = employeeRepository.getByNameAndAge("Alphonse", 23);
+        log.info("employee find by name and age ");
+        System.out.println(employee);
+        Assertions.assertThat(employee.size()).isEqualTo(1);
+    } 
+
+    @Test 
+    public void getByAgeAboutTest() {
+        List<Employee> employee = employeeRepository.getByAgeAbout(23, 30);
+        log.info("employee find by age from 23 to 30");
+        System.out.println(employee.toString());
+        Assertions.assertThat(employee.size()).isGreaterThan(10);
+    }
 
 }

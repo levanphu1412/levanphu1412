@@ -20,10 +20,8 @@ public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name="first_name",nullable = false)
-    private String firstName;
-    @Column(name="last_name",nullable = false)
-    private String lastName;
+    @Embedded
+    private Name name;
     @Column(name="gender")
     private String gender;
     @Column(name="address")
@@ -44,11 +42,7 @@ public class Employee {
                 .toLocalDate();
         return Period.between(birthDayInLocalDate, LocalDate.now()).getYears();
     }
-    @Transient
-    private String fullName;
-    public String getFullName() {
-        return firstName + " " + lastName;
-    }
+    
    
 
 
